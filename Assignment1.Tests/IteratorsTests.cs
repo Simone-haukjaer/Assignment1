@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace BDSA2019.Assignment01.Tests
+namespace Assignment1
 {
     public class IteratorsTests
     {
@@ -12,30 +12,30 @@ namespace BDSA2019.Assignment01.Tests
             //Arrange
             IEnumerable<IEnumerable<int>> input = new List<List<int>>()
             {
-                new List<int>() { 1, 2},
-                new List<int>() { 3, 4},
-                new List<int>() { 5, 6}
+                new List<int>() {1, 2},
+                new List<int>() {3, 4},
+                new List<int>() {5, 6}
             };
 
             //Act
             var actual = Iterators.Flatten(input);
 
             //Assert
-            Assert.Equal(new List<int> { 1, 2, 3, 4, 5, 6 }, actual);
+            Assert.Equal(new List<int> {1, 2, 3, 4, 5, 6}, actual);
         }
 
         [Fact]
         public void Filter_Iterator_valid()
         {
             //Arrange
-            int[] numbers = { 0, 1, 2, 3 };
+            int[] numbers = {0, 1, 2, 3};
             Predicate<int> predicate = x => x > 2;
 
             //Act
             var actual = Iterators.Filter(numbers, predicate);
 
             //Assert
-            Assert.Equal(new List<int> { 3 }, actual);
+            Assert.Equal(new List<int> {3}, actual);
         }
     }
 }

@@ -1,34 +1,32 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace BDSA2019.Assignment01
+namespace Assignment1
 {
     public static class RegExpr
     {
         public static IEnumerable<string> SplitLine(IEnumerable<string> lines)
         {
-            List<string> strings = new List<string>();
-
             foreach (var s in lines)
             {
                 var pattern = @"(.+?) | (\w ? (\s+? $))";
                 string[] splittedString = Regex.Split(s, pattern);
+                
                 foreach (var i in splittedString)
                 {
-                    if (!i.Equals("") && Regex.IsMatch(i + " ", pattern)) strings.Add(i);
+                    if (!i.Equals("") && Regex.IsMatch(i + " ", pattern))
+                    {
+                        yield return i;
+                    }
                 }
             }
-
-            return strings;
-
         }
 
-        public static IEnumerable<(int width, int height)> Resolution(string resolutions)
+        public static IEnumerable<(int width, int height)> Resolutions(string resolutions)
         {
             var pattern = @"^(?'first_number'[0-9].*)x(?'second_number'[0-9].*\S)$";
             int firstNumber = 0;
             int secondNumber = 0;
-            var list = new List<(int width, int height)>();
 
             foreach (Match m in Regex.Matches(resolutions, pattern))
             {
@@ -39,16 +37,14 @@ namespace BDSA2019.Assignment01
                 int.TryParse(_secondNumber, out secondNumber);
 
                 var pair = (firstNumber, secondNumber);
-                list.Add(pair);
 
+                yield return pair;
             }
-            return list;
         }
 
         public static IEnumerable<string> InnerText(string html, string tag)
         {
             var pattern = @"([^<>]*?)(<\/?[-:\w]+)(?:>|\s[^<>]*?>)|$";
-            var list = new List<string>();
             string prevTag = null;
 
             foreach (Match m in Regex.Matches(html, pattern))
@@ -60,12 +56,12 @@ namespace BDSA2019.Assignment01
                 {
                     if (tag.Equals(tags) || tag.Equals(prevTag))
                     {
-                        list.Add(innerText);
+                        yield return innerText;
                     }
                 }
+
                 prevTag = tags;
             }
-            return list;
         }
     }
 }

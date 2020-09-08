@@ -1,15 +1,15 @@
 ﻿using System.Linq;
 using Xunit;
 
-namespace BDSA2019.Assignment01.Tests
+namespace Assignment1
 {
     public class RegExprTests
     {
         [Fact]
-        public void splitLine_Valid()
+        public void SplitLine_valid()
         {
             //Arrange
-            string[] lines = { "hejsa du", "Hvad laver du" };
+            string[] lines = {"hejsa du", "Hvad laver du"};
 
             //Act
             var actual = RegExpr.SplitLine(lines).Count();
@@ -19,10 +19,10 @@ namespace BDSA2019.Assignment01.Tests
         }
 
         [Fact]
-        public void splitLine_Valid2()
+        public void SplitLine_valid2()
         {
             //Arrange
-            string[] lines = { "Jeg hedder Simone", "Vi er 2 i gruppen" };
+            string[] lines = {"Jeg hedder Simone", "Vi er 2 i gruppen"};
 
             //Act
             var actual = RegExpr.SplitLine(lines).Count();
@@ -32,10 +32,10 @@ namespace BDSA2019.Assignment01.Tests
         }
 
         [Fact]
-        public void splitLine_Invalid()
+        public void SplitLine_invalid()
         {
             //Arrange
-            string[] lines = { "" };
+            string[] lines = {""};
 
             //Act
             var actual = RegExpr.SplitLine(lines).Count();
@@ -45,26 +45,26 @@ namespace BDSA2019.Assignment01.Tests
         }
 
         [Fact]
-        public void Resolution_valid()
+        public void Resolutions_valid()
         {
             //Arrange
             var strings = "4098x4987";
 
             //Act
-            var actual = RegExpr.Resolution(strings).ElementAt(0);
+            var actual = RegExpr.Resolutions(strings).ElementAt(0);
 
             //Assert
             Assert.Equal((4098, 4987), actual);
         }
 
         [Fact]
-        public void Resolution_valid2()
+        public void Resolutions_valid2()
         {
             //Arrange
             var strings = "2x123456";
 
             //Act
-            var actual = RegExpr.Resolution(strings).ElementAt(0);
+            var actual = RegExpr.Resolutions(strings).ElementAt(0);
 
             //Assert
             Assert.Equal((2, 123456), actual);
@@ -99,7 +99,7 @@ namespace BDSA2019.Assignment01.Tests
         }
 
         [Fact]
-        public void InnerText_NestedTags_Valid()
+        public void InnerText_NestedTags_valid()
         {
             //Arrange
             var html = "<k> Der er (cirka) 170 på linjen <p> ITU </p> </k>";

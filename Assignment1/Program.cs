@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BDSA2020.Assignment01
+namespace Assignment1
 {
     public class Program
     {
