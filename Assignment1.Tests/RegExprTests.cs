@@ -97,19 +97,5 @@ namespace Assignment1
             //Assert
             Assert.Equal(" Der er (cirka) 170 på linjen ", actual);
         }
-
-        [Fact]
-        public void InnerText_NestedTags_valid()
-        {
-            //Arrange
-            var html = "<k> Der er (cirka) 170 på linjen <p> ITU </p> </k>";
-            var tag = "<k>";
-
-            //Act
-            var actual = RegExpr.InnerText(html, tag).ElementAt(0);
-
-            //Assert
-            Assert.Equal(" Der er (cirka) 170 på linjen ITU", actual);
-        }
     }
 }
